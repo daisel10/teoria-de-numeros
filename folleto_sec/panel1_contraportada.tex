@@ -1,0 +1,65 @@
+%%── PANEL 1: Contra-portada ─────────────────────────────────────────────────
+\panel{LightBg}{%
+  \vspace{4mm}
+  % Franja lateral izquierda (spine)
+  \begin{tikzpicture}[overlay,remember picture]
+    \fill[Navy] (-\PAD,-\PAD) rectangle (-\PAD+4.5mm,-\PH+\PAD);
+    \node[rotate=90,text=white,font=\bfseries\tiny,anchor=south]
+      at (-\PAD+2.2mm,-\PH/2+2\PAD)
+      {Teor\'ia de N\'umeros \textbullet{} Univ. del Rosario \textbullet{} 2026};
+  \end{tikzpicture}
+  \hspace{5mm}%
+  \begin{minipage}[t]{\dimexpr\linewidth-5mm\relax}
+    {\footnotesize\bfseries\color{Navy}?`Qu\'e es la Teor\'ia de Ramsey?}
+    \vspace{3pt}
+
+    {\scriptsize La Teor\'ia de Ramsey es una rama de la combinatoria que
+    estudia la aparici\'on \textit{inevitable} de estructuras ordenadas
+    dentro de conjuntos suficientemente grandes.}
+
+    \vspace{4pt}
+    \begin{tcolorbox}[key]
+      {\scriptsize\centering\itshape
+      ``No existe el caos absoluto: en cualquier
+      estructura lo suficientemente grande, el orden emerge.''}
+    \end{tcolorbox}
+
+    \vspace{3pt}
+    {\scriptsize El \textbf{principio del palomar} es la herramienta base:
+    $n{+}1$ objetos en $n$ cajones $\Rightarrow$ alg\'un caj\'on tiene $\geq 2$.
+    Este argumento simple impulsa resultados profund\'isimos.}
+
+    \vspace{5pt}
+    {\scriptsize\bfseries\color{Navy}Progresión de resultados}
+    \vspace{2pt}
+
+    \begin{center}
+    \begin{tikzpicture}[
+      node distance=0.26cm,
+      b/.style={draw,rounded corners=2pt,fill=#1!8,draw=#1!75,
+        font=\tiny\bfseries,align=center,
+        inner sep=3pt,minimum width=3.0cm,text=black}]
+      \node[b=blue!70!black] (vdw)
+        {Van der Waerden (1927)\\[-1pt]{\tiny\normalfont coloraciones $\to$ PA}};
+      \node[b=Amethyst,below=of vdw] (szem)
+        {Szemer\'edi (1975)\\[-1pt]{\tiny\normalfont $d(A)>0$ $\to$ PA}};
+      \node[b=Teal,below=of szem] (gt)
+        {Green-Tao (2004)\\[-1pt]{\tiny\normalfont primos, $d=0$ $\to$ PA}};
+      \draw[->,thick,blue!55] (vdw)--(szem)
+        node[midway,right=1pt,font=\tiny\normalfont] {implica};
+      \draw[->,thick,Amethyst!80] (szem)--(gt)
+        node[midway,right=1pt,font=\tiny\normalfont] {trasciende};
+    \end{tikzpicture}
+    \end{center}
+
+    \vfill
+    {\color{Navy!35}\rule{\linewidth}{0.4pt}}
+    \vspace{2pt}
+    {\tiny\color{Navy!55}
+      \textbf{Universidad del Rosario}\\
+      Escuela de Ciencias e Ingenier\'ia\\
+      Proyecto Final — Teor\'ia de N\'umeros\\
+      Docente: Juan Camilo Arias\\[2pt]
+      Samuel De Dios \& David S\'anchez · 2026}
+  \end{minipage}
+}%

@@ -1,0 +1,26 @@
+\begin{frame}{Ejemplo de motivación}
+    \begin{center}
+        ¿Se puede tener una 2-coloración de los primeros 9 naturales con una progresión aritmética monocromática de 3 elementos?
+    \end{center}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.95\linewidth]{van der waerden.png}
+        \caption{Ejemplo de 2-coloración en $[9]$}
+        \label{fig:placeholder}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Teorema de Van der Waerden}
+    \begin{block}{Teorema finito (Van der Waerden, 1927)}
+        Para todo entero positivo $r$, $k$ existe un mínimo entero positivo $W(r,k)$ tal que toda $r$-coloración de $[n]=\{1,2,\dots,n\}$, con $n\geq W(r,k)$, contiene una progresión aritmética monocromática de tamaño $k$.
+    \end{block}
+    
+    \begin{block}{Teorema infinito (Van der Waerden, 1927)}
+        Toda coloración finita de $\mathbb{Z}^{+}$ contiene una progresión aritmética monocromática \textbf{arbitrariamente grande}.
+    \end{block}
+
+    \pause
+    \begin{block}{Cota de números de Van der Waerden (Timothy Gowers, 2001)}
+        $$W(r, k) \le 2^{2^{r^{2^{2^{k+9}}}}}$$
+    \end{block}
+\end{frame}

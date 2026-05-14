@@ -1,0 +1,93 @@
+% DIAPOSITIVA 1: Contexto Histórico y Concepto Clave
+\begin{frame}{Teorema de Szemerédi: Contexto Histórico}
+
+    \begin{columns}
+
+        \begin{column}{0.6\textwidth}
+            Propuesto como conjetura por \textbf{Erdős y Turán} en
+            1936, no fue hasta \textbf{1975} que \textbf{Endre
+            Szemerédi} logró demostrarlo, obteniendo el
+            \textbf{Premio Abel}.
+
+            \vspace{0.4cm}
+
+            \begin{block}{Concepto Clave: Densidad vs.\ Color}
+                Mientras que Ramsey trabaja con \textit{coloraciones},
+                Szemerédi trabaja con \textbf{densidad}: si un
+                subconjunto de enteros es lo suficientemente
+                ``grueso'', debe contener progresiones aritméticas.
+            \end{block}
+        \end{column}
+
+        \begin{column}{0.4\textwidth}
+            \begin{exampleblock}{Conexiones}
+                \begin{itemize}
+                    \item Teoría de números
+                    \item Teoría ergódica
+                    \item Informática (TCS)
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+
+% DIAPOSITIVA 2: Definición Formal
+\begin{frame}{Teorema de Szemerédi: Enunciado Formal}
+
+    \begin{alertblock}{Teorema (Szemerédi, 1975)}
+        Sea $A \subseteq \{1, 2, \dots, N\}$. Para todo entero
+        $k \geq 3$ y todo $\delta > 0$, existe $N(\delta, k)$ tal
+        que si
+        $$|A| \geq \delta N$$
+        entonces $A$ contiene una \textbf{progresión aritmética de
+        longitud $k$}.
+    \end{alertblock}
+
+    \pause
+    \vspace{0.3cm}
+
+    \begin{block}{Diferencia con Ramsey Tradicional}
+        \begin{itemize}
+            \item \textbf{Ramsey:} al dividir en $r$ colores, algún
+                  color contendrá el patrón.
+            \item \textbf{Szemerédi:} \textit{cualquier} conjunto con
+                  densidad positiva contiene el patrón, sin necesidad
+                  de considerar todas las clases.
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+
+% DIAPOSITIVA 3: El Lema de Regularidad y Conclusión
+\begin{frame}{El Lema de Regularidad de Szemerédi}
+
+    Para demostrar el teorema, Szemerédi introdujo el
+    \textbf{Lema de Regularidad}, hoy una herramienta fundamental
+    en combinatoria:
+
+    \begin{enumerate}
+        \item \textbf{Partición en bloques:} Cualquier grafo grande
+              puede dividirse en bloques más pequeños.
+        \item \textbf{Comportamiento pseudo-aleatorio:} La mayoría de
+              los bloques se comportan de manera casi aleatoria
+              (``regular'').
+        \item \textbf{Estructura forzada:} La regularidad hace
+              inevitable la aparición de progresiones aritméticas.
+    \end{enumerate}
+
+    \pause
+    \vspace{0.3cm}
+
+    \begin{block}{Conclusión}
+        El Teorema de Szemerédi refuerza la máxima de Ramsey:
+        \textbf{la estructura es inevitable}. Si seleccionas una
+        fracción constante de los enteros, no importa cuán caótica
+        sea tu elección; terminarás creando una progresión aritmética
+        perfecta, por \textit{pura necesidad matemática}.
+    \end{block}
+
+\end{frame}

@@ -1,0 +1,95 @@
+% DIAPOSITIVA 1: Contexto Histórico y Filosofía
+\begin{frame}{Contexto Histórico y Filosofía}
+
+    \begin{columns}
+
+        \begin{column}{0.65\textwidth}
+
+            \textbf{Frank Plumpton Ramsey (1903--1930)} fue un genio
+            británico cuyas ideas sentaron las bases de esta rama de
+            la matemática.
+
+            \vspace{0.4cm}
+
+            \begin{exampleblock}{Principio de Motzkin}
+                \centering
+                \textit{``El desorden completo es imposible''.}
+            \end{exampleblock}
+
+            \vspace{0.3cm}
+
+            \begin{block}{Concepto Clave}
+                Si un sistema es lo suficientemente grande, por más
+                caótico que parezca, \textbf{siempre aparecerán
+                patrones} o subconjuntos con propiedades específicas.
+            \end{block}
+
+        \end{column}
+
+        \begin{column}{0.35\textwidth}
+            % Puedes insertar aquí una imagen de Ramsey, p.ej.:
+            % \includegraphics[width=\linewidth]{ramsey.jpg}
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+
+% DIAPOSITIVA 2: Definición Formal en Teoría de Grafos
+\begin{frame}{Definición Formal}
+
+    \begin{alertblock}{Número de Ramsey $R(r,s)$}
+        Para cualquier par de enteros positivos $(r,s)$, existe un
+        número mínimo $R(r,s)$ tal que, si $n \geq R(r,s)$ y se
+        colorean las aristas de un grafo completo $K_n$ con
+        \textbf{dos colores}, entonces necesariamente aparece:
+        \begin{itemize}
+            \item un subgrafo $K_r$ con todas las aristas del
+                  \textbf{primer color}, o
+            \item un subgrafo $K_s$ con todas las aristas del
+                  \textbf{segundo color}.
+        \end{itemize}
+    \end{alertblock}
+
+    \pause
+
+    \begin{center}
+        \textbf{Valores conocidos:} \quad
+        $R(3,3)=6$ \quad $R(3,4)=9$ \quad $R(3,5)=14$ \quad
+        $R(4,4)=18$
+    \end{center}
+
+\end{frame}
+
+
+% DIAPOSITIVA 3: Los Tres Pilares y Conclusión
+\begin{frame}{Método de Deducción: Los Tres Pilares}
+
+    Para demostrar o entender un problema de Ramsey se consideran:
+
+    \begin{enumerate}
+
+        \item \textbf{Estructura:} Se trabaja con un conjunto grande
+              (un ``universo'' de elementos).
+
+        \item \textbf{Partición (Conteo):} Los elementos se dividen
+              en categorías —colores, grupos, clases.
+
+        \item \textbf{Inevitabilidad (Orden):} Al alcanzar un tamaño
+              crítico, la densidad fuerza la aparición de un
+              \textbf{patrón uniforme}.
+
+    \end{enumerate}
+
+    \pause
+    \vspace{0.3cm}
+
+    \begin{block}{Conclusión}
+        La Teoría de Ramsey muestra que \textbf{el azar tiene
+        límites}. No importa cuánto se mezclen los elementos; si el
+        sistema crece lo suficiente, los patrones aparecen por
+        \textit{pura necesidad matemática}.
+    \end{block}
+
+\end{frame}

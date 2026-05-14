@@ -1,0 +1,27 @@
+\section{Coloración de enteros}
+
+\begin{frame}{Coloración de enteros}
+    \begin{center}
+        En $K_6$ vimos que colorear una estructura grande \textbf{siempre produce orden}.\\[6pt]
+        ¿Ocurre lo mismo al colorear los \textbf{números enteros}?
+    \end{center}
+
+    \begin{center}
+    \begin{tikzpicture}[scale=0.92]
+        \foreach \n/\c in {1/red,2/blue,3/red,4/blue,5/red,6/blue,7/red,8/blue,9/red} {
+            \filldraw[\c!72, draw=\c!90!black, thick] ({(\n-1)*1.05}, 0) circle (0.38cm);
+            \node[text=white, font=\small\bfseries] at ({(\n-1)*1.05}, 0) {\n};
+        }
+        \node[font=\large] at ({9*1.05}, 0) {$\cdots$};
+    \end{tikzpicture}
+    \end{center}
+
+    \begin{block}{Coloración monocromática en $\mathbb{N}$}
+        Una $r$-coloración asigna a cada entero uno de $r$ colores.
+        El conjunto $\{1,3,5,7,9,\ldots\}$ es \textbf{monocromático} \textcolor{red}{rojo}.
+    \end{block}
+
+    \begin{alertblock}{Pregunta central}
+        Dada cualquier $r$-coloración de $\mathbb{N}$, ¿siempre existe una estructura aritmética monocromática?
+    \end{alertblock}
+\end{frame}

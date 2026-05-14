@@ -1,0 +1,506 @@
+\documentclass[a4paper,9pt]{article}
+
+\usepackage[landscape,top=0cm,bottom=0cm,left=0cm,right=0cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-noquoting]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,arrows.meta}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\pagestyle{empty}
+\setlength{\topskip}{0pt}   % sin desplazamiento en la primera línea de página
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\fboxsep}{0pt}   % colorbox sin padding para que los paneles queden exactos
+\setlist{leftmargin=*,itemsep=2pt,topsep=1pt,parsep=0pt}
+
+% ── Dimensiones ────────────────────────────────────────────────────────────────
+% A4 landscape: 297 × 210 mm  → 3 paneles de 99 mm cada uno
+\newlength{\PW}\setlength{\PW}{99mm}
+\newlength{\PH}\setlength{\PH}{210mm}
+\newlength{\PAD}\setlength{\PAD}{6mm}   % padding interior de cada panel
+
+% ── Paleta ────────────────────────────────────────────────────────────────────
+\definecolor{Navy}{RGB}{16,38,82}
+\definecolor{Emerald}{RGB}{10,82,54}
+\definecolor{Crimson}{RGB}{132,16,22}
+\definecolor{Gold}{RGB}{170,120,8}
+\definecolor{Amethyst}{RGB}{72,28,96}
+\definecolor{Teal}{RGB}{12,92,108}
+\definecolor{LightBg}{RGB}{250,250,253}
+
+% ── Macro de panel ────────────────────────────────────────────────────────────
+% #1 = color de fondo  #2 = contenido
+\newcommand{\panel}[2]{%
+  \colorbox{#1}{%
+    \begin{minipage}[t][\PH][t]{\PW}%
+      \vspace*{\PAD}%
+      \par\noindent\hspace*{\PAD}%
+      \begin{minipage}[t]{\dimexpr\PW-2\PAD\relax}%
+        #2%
+      \end{minipage}%
+    \end{minipage}%
+  }%
+}
+
+% ── Estilos tcolorbox (sin width= — heredan \linewidth del minipage) ───────────
+\tcbset{
+  thm/.style={enhanced jigsaw,breakable,sharp corners,
+    colback=Navy!5,colframe=Navy,
+    fonttitle=\bfseries\scriptsize,coltitle=white,
+    attach boxed title to top left={xshift=4pt,yshift=-2pt},
+    boxed title style={colback=Navy,sharp corners,
+      top=1pt,bottom=1pt,left=2pt,right=2pt},
+    top=3pt,bottom=2pt,left=3pt,right=3pt,
+    before skip=2pt,after skip=2pt},
+  def/.style={enhanced jigsaw,breakable,sharp corners,
+    colback=Emerald!6,colframe=Emerald,
+    fonttitle=\bfseries\scriptsize,coltitle=white,
+    attach boxed title to top left={xshift=4pt,yshift=-2pt},
+    boxed title style={colback=Emerald,sharp corners,
+      top=1pt,bottom=1pt,left=2pt,right=2pt},
+    top=3pt,bottom=2pt,left=3pt,right=3pt,
+    before skip=2pt,after skip=2pt},
+  ex/.style={enhanced jigsaw,breakable,sharp corners,
+    colback=Crimson!5,colframe=Crimson,
+    fonttitle=\bfseries\scriptsize,coltitle=white,
+    attach boxed title to top left={xshift=4pt,yshift=-2pt},
+    boxed title style={colback=Crimson,sharp corners,
+      top=1pt,bottom=1pt,left=2pt,right=2pt},
+    top=3pt,bottom=2pt,left=3pt,right=3pt,
+    before skip=2pt,after skip=2pt},
+  key/.style={enhanced,sharp corners,
+    colback=Gold!12,colframe=Gold!75,
+    top=2pt,bottom=2pt,left=3pt,right=3pt,
+    before skip=2pt,after skip=2pt},
+  pthm/.style={enhanced jigsaw,breakable,sharp corners,
+    colback=Amethyst!5,colframe=Amethyst,
+    fonttitle=\bfseries\scriptsize,coltitle=white,
+    attach boxed title to top left={xshift=4pt,yshift=-2pt},
+    boxed title style={colback=Amethyst,sharp corners,
+      top=1pt,bottom=1pt,left=2pt,right=2pt},
+    top=3pt,bottom=2pt,left=3pt,right=3pt,
+    before skip=2pt,after skip=2pt},
+  tthm/.style={enhanced jigsaw,breakable,sharp corners,
+    colback=Teal!5,colframe=Teal,
+    fonttitle=\bfseries\scriptsize,coltitle=white,
+    attach boxed title to top left={xshift=4pt,yshift=-2pt},
+    boxed title style={colback=Teal,sharp corners,
+      top=1pt,bottom=1pt,left=2pt,right=2pt},
+    top=3pt,bottom=2pt,left=3pt,right=3pt,
+    before skip=2pt,after skip=2pt}
+}
+
+% Cabecera de sección dentro del panel
+\newcommand{\phdr}[2]{%
+  \vspace{4pt}%
+  \noindent\colorbox{#1}{\hspace{2pt}%
+    \begin{minipage}[t]{\dimexpr\linewidth-4pt\relax}%
+      \vspace{2pt}{\color{white}\bfseries\scriptsize #2}\vspace{2pt}%
+    \end{minipage}%
+    \hspace{2pt}}%
+  \vspace{2pt}\par}
+
+\begin{document}
+
+%%==========================================================================
+%% PÁGINA 1 — FRENTE
+%% Plano (izq → der): [Contra-portada] [Portada] [Índice de temas]
+%% Al doblar tipo Z: se ve la Portada
+%%==========================================================================
+\noindent%
+%%── PANEL 1: Contra-portada ─────────────────────────────────────────────────
+\panel{LightBg}{%
+  \vspace{4mm}
+  % Franja lateral izquierda (spine)
+  \begin{tikzpicture}[overlay,remember picture]
+    \fill[Navy] (-\PAD,-\PAD) rectangle (-\PAD+4.5mm,-\PH+\PAD);
+    \node[rotate=90,text=white,font=\bfseries\tiny,anchor=south]
+      at (-\PAD+2.2mm,-\PH/2+2\PAD)
+      {Teor\'ia de N\'umeros \textbullet{} Univ. del Rosario \textbullet{} 2026};
+  \end{tikzpicture}
+  \hspace{5mm}%
+  \begin{minipage}[t]{\dimexpr\linewidth-5mm\relax}
+    {\footnotesize\bfseries\color{Navy}?`Qu\'e es la Teor\'ia de Ramsey?}
+    \vspace{3pt}
+
+    {\scriptsize La Teor\'ia de Ramsey es una rama de la combinatoria que
+    estudia la aparici\'on \textit{inevitable} de estructuras ordenadas
+    dentro de conjuntos suficientemente grandes.}
+
+    \vspace{4pt}
+    \begin{tcolorbox}[key]
+      {\scriptsize\centering\itshape
+      ``No existe el caos absoluto: en cualquier
+      estructura lo suficientemente grande, el orden emerge.''}
+    \end{tcolorbox}
+
+    \vspace{3pt}
+    {\scriptsize El \textbf{principio del palomar} es la herramienta base:
+    $n{+}1$ objetos en $n$ cajones $\Rightarrow$ alg\'un caj\'on tiene $\geq 2$.
+    Este argumento simple impulsa resultados profund\'isimos.}
+
+    \vspace{5pt}
+    {\scriptsize\bfseries\color{Navy}Progresión de resultados}
+    \vspace{2pt}
+
+    \begin{center}
+    \begin{tikzpicture}[
+      node distance=0.26cm,
+      b/.style={draw,rounded corners=2pt,fill=#1!8,draw=#1!75,
+        font=\tiny\bfseries,align=center,
+        inner sep=3pt,minimum width=3.0cm,text=black}]
+      \node[b=blue!70!black] (vdw)
+        {Van der Waerden (1927)\\[-1pt]{\tiny\normalfont coloraciones $\to$ PA}};
+      \node[b=Amethyst,below=of vdw] (szem)
+        {Szemer\'edi (1975)\\[-1pt]{\tiny\normalfont $d(A)>0$ $\to$ PA}};
+      \node[b=Teal,below=of szem] (gt)
+        {Green-Tao (2004)\\[-1pt]{\tiny\normalfont primos, $d=0$ $\to$ PA}};
+      \draw[->,thick,blue!55] (vdw)--(szem)
+        node[midway,right=1pt,font=\tiny\normalfont] {implica};
+      \draw[->,thick,Amethyst!80] (szem)--(gt)
+        node[midway,right=1pt,font=\tiny\normalfont] {trasciende};
+    \end{tikzpicture}
+    \end{center}
+
+    \vfill
+    {\color{Navy!35}\rule{\linewidth}{0.4pt}}
+    \vspace{2pt}
+    {\tiny\color{Navy!55}
+      \textbf{Universidad del Rosario}\\
+      Escuela de Ciencias e Ingenier\'ia\\
+      Proyecto Final — Teor\'ia de N\'umeros\\
+      Docente: Juan Camilo Arias\\[2pt]
+      Samuel De Dios \& David S\'anchez · 2026}
+  \end{minipage}
+}%
+%%── PANEL 2: PORTADA ────────────────────────────────────────────────────────
+\panel{Navy}{%
+  \begin{center}
+    \vspace{5mm}
+    % K6 decorativo
+    \begin{tikzpicture}[scale=1.3]
+      \foreach \i/\ang in {0/90,1/30,2/-30,3/-90,4/-150,5/150}
+        \coordinate (v\i) at (\ang:1.55cm);
+      \filldraw[white,opacity=0.06] (0,0) circle (1.85cm);
+      \draw[red!55,line width=1.6pt]
+        (v0)--(v1)--(v2)--(v3)--(v4)--(v5)--cycle;
+      \foreach \i/\j in {0/2,0/3,0/4,1/3,1/4,1/5,2/4,2/5,3/5}
+        \draw[white!35,line width=0.7pt] (v\i)--(v\j);
+      \fill[blue!35,opacity=0.3] (v0)--(v2)--(v4)--cycle;
+      \draw[white,line width=1.8pt] (v0)--(v2)--(v4)--cycle;
+      \foreach \i in {0,...,5}
+        \filldraw[white] (v\i) circle (3pt);
+      \node[white!70,font=\scriptsize] at (0,-2.15cm) {$R(3,3)=6$};
+    \end{tikzpicture}
+
+    \vspace{5pt}
+    {\color{white}\LARGE\bfseries Teor\'ia de Ramsey}\\[3pt]
+    {\color{white!70}\normalsize\itshape El orden en el caos}
+
+    \vspace{8pt}
+    {\color{white!30}\rule{5cm}{0.3pt}}
+    \vspace{6pt}
+
+    {\color{white!80}\small Samuel De Dios}\\[1pt]
+    {\color{white!80}\small David S\'anchez}
+
+    \vspace{6pt}
+    {\color{white!30}\rule{5cm}{0.3pt}}
+    \vspace{5pt}
+
+    {\color{white!55}\scriptsize Universidad del Rosario}\\
+    {\color{white!55}\scriptsize Teor\'ia de N\'umeros · 2026}
+
+    \vfill
+
+    {\color{Gold!75}\footnotesize $W(r,k)\leq 2^{2^{r^{2^{2^{k+9}}}}}$}\\[3pt]
+    {\color{white!40}\scriptsize Cota de Gowers (2001)}
+
+    \vspace{8pt}
+    % Barra multicolor inferior
+    \begin{tikzpicture}
+      \foreach \x/\c in {0/red!55,0.65/Gold!75,1.3/Emerald!55,
+                         1.95/Amethyst!55,2.6/Teal!55,3.25/white!40}
+        \fill[\c] (\x cm,0) rectangle (\x cm+0.5cm,0.12cm);
+    \end{tikzpicture}
+  \end{center}
+}%
+%%── PANEL 3: Índice ─────────────────────────────────────────────────────────
+\panel{LightBg}{%
+  \vspace{3mm}
+  {\small\bfseries\color{Navy}Contenido}
+  \vspace{3pt}
+  {\color{Navy!35}\rule{\linewidth}{0.5pt}}
+  \vspace{2pt}
+
+  \begin{enumerate}[leftmargin=14pt,itemsep=5pt,
+                    label={\color{Navy}\bfseries\arabic*.}]
+    \item {\scriptsize\textbf{Introducci\'on a la Teor\'ia de Ramsey}\\
+      \tiny\color{gray!65}El principio del palomar y los n\'umeros de Ramsey.}
+
+    \item {\scriptsize\textbf{El problema de la amistad}\\
+      \tiny\color{gray!65}$K_6$ con 2-coloraci\'on siempre tiene tri\'angulo monocrom\'atico.}
+
+    \item {\scriptsize\textbf{Coloraci\'on de enteros}\\
+      \tiny\color{gray!65}$r$-coloraciones y conjuntos monocrom\'aticos.}
+
+    \item {\scriptsize\textbf{Teorema de Schur (1916)}\\
+      \tiny\color{gray!65}Toda coloraci\'on contiene $x+y=z$ monocrom\'atico.}
+
+    \item {\scriptsize\textbf{Teorema de Van der Waerden (1927)}\\
+      \tiny\color{gray!65}PA monocrom\'aticas de cualquier longitud.}
+
+    \item {\scriptsize\textbf{Densidad natural}\\
+      \tiny\color{gray!65}Conjuntos con $d(A)>0$ vs.\ $d(A)=0$.}
+
+    \item {\scriptsize\textbf{Teorema de Szemer\'edi (1975)}\\
+      \tiny\color{gray!65}$d(A)>0$ garantiza PA arbitrariamente largas.}
+
+    \item {\scriptsize\textbf{Teorema de Green-Tao (2004)}\\
+      \tiny\color{gray!65}Los primos ($d=0$) contienen PA de cualquier longitud.}
+
+    \item {\scriptsize\textbf{Conclusiones}\\
+      \tiny\color{gray!65}El orden es inevitable incluso en densidad cero.}
+  \end{enumerate}
+
+  \vfill
+  {\color{Navy!30}\rule{\linewidth}{0.4pt}}
+  \vspace{3pt}
+
+  \begin{center}
+  \begin{tikzpicture}[scale=0.82,
+    nd/.style={draw=Navy!50,fill=Navy!7,rounded corners=2pt,
+      font=\tiny,inner sep=2pt,minimum width=1.7cm,align=center}]
+    \node[nd] (a) at (0,0)     {Palomar};
+    \node[nd] (b) at (2.0,0)   {Ramsey};
+    \node[nd] (c) at (1.0,-0.65){Schur};
+    \node[nd] (d) at (0,-1.3)  {VdW};
+    \node[nd] (e) at (2.0,-1.3){Szem.};
+    \node[nd] (f) at (1.0,-1.95){Green-Tao};
+    \foreach \s/\t in {a/b,b/c,c/d,c/e,d/f,e/f}
+      \draw[->,Navy!45,thin] (\s)--(\t);
+  \end{tikzpicture}
+  \end{center}
+}%
+
+%%==========================================================================
+%% PÁGINA 2 — VUELTA (interior al abrir)
+%% [Temas 1–2] | [Temas 3–5] | [Temas 6–9]
+%%==========================================================================
+\newpage
+\noindent%
+%%── PANEL 4: Temas 1 y 2 ────────────────────────────────────────────────────
+\panel{LightBg}{%
+  \phdr{Navy}{1 · Introducci\'on a la Teor\'ia de Ramsey}
+  {\scriptsize La Teor\'ia de Ramsey estudia cu\'ando una estructura
+  suficientemente grande contiene \emph{siempre} cierta subestructura
+  ordenada.}
+  \vspace{2pt}
+
+  \begin{tcolorbox}[key]
+    {\scriptsize\bfseries Principio del palomar:}
+    {\scriptsize $n{+}1$ objetos en $n$ cajones $\Rightarrow$
+    alg\'un caj\'on tiene $\geq 2$.}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[def,title={N\'umero de Ramsey $R(s,t)$}]
+    {\scriptsize M\'inimo $n$ tal que toda 2-coloraci\'on de aristas de
+    $K_n$ contiene un clique \textcolor{blue!70!black}{\bfseries azul}
+    de tama\~no $s$ \textbf{o} uno \textcolor{red!70!black}{\bfseries rojo}
+    de tama\~no $t$.}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[key]
+    {\scriptsize $R(3,3)=6$ \quad $R(3,4)=9$ \quad $R(4,4)=18$}
+  \end{tcolorbox}
+
+  \phdr{Navy}{2 · El problema de la amistad}
+  {\scriptsize En un grupo de 6 personas, \textbf{?`}siempre existen 3 que
+  se conocen o 3 que se desconocen? Se modela como $K_6$: aristas
+  \textcolor{red!70!black}{\bfseries rojas} = conocidos,
+  \textcolor{blue!70!black}{\bfseries azules} = desconocidos.}
+
+  \begin{center}
+  \begin{tikzpicture}[scale=0.62]
+    \foreach \i/\ang in {0/90,1/30,2/-30,3/-90,4/-150,5/150}
+      \coordinate (v\i) at (\ang:1.2cm);
+    \draw[red!70!black,thick] (v0)--(v1)--(v2)--(v3)--(v4)--(v5)--cycle;
+    \foreach \i/\j in {0/2,0/3,0/4,1/3,1/4,1/5,2/4,2/5,3/5}
+      \draw[blue!70!black,thick] (v\i)--(v\j);
+    \fill[blue!15] (v0)--(v2)--(v4)--cycle;
+    \draw[blue!70!black,line width=1.5pt] (v0)--(v2)--(v4)--cycle;
+    \foreach \i/\ang in {0/90,1/30,2/-30,3/-90,4/-150,5/150}{
+      \filldraw[black] (v\i) circle (1.8pt);
+      \node[font=\tiny] at (\ang:1.50cm) {$\i$};
+    }
+    \node[font=\tiny,blue!70!black] at (0,-1.75cm)
+      {tri\'angulo \textbf{0-2-4} monocrom\'atico};
+  \end{tikzpicture}
+  \end{center}
+
+  {\scriptsize\textbf{Prueba:} $v$ tiene 5 aristas; $\geq 3$ del mismo color.
+  Si 3 son rojas a $u_1,u_2,u_3$: si $u_iu_j$ rojo $\Rightarrow$ tri\'angulo
+  rojo; si todos azules $\Rightarrow$ tri\'angulo azul. $\square$}
+}%
+%%── PANEL 5: Temas 3, 4 y 5 ─────────────────────────────────────────────────
+\panel{LightBg}{%
+  \phdr{Emerald}{3 · Coloraci\'on de enteros}
+  \begin{tcolorbox}[def,title={$r$-coloraci\'on}]
+    {\scriptsize Funci\'on $f:X\to\{1,\ldots,r\}$.
+    El conjunto $A$ es \textbf{monocrom\'atico} si $A\subseteq f^{-1}(i)$.}
+  \end{tcolorbox}
+
+  \begin{center}
+  \begin{tikzpicture}[scale=0.68]
+    \foreach \n/\c in {1/red,2/blue,3/red,4/blue,5/red,6/blue,7/red,8/blue}{
+      \filldraw[\c!60,draw=\c!80!black]
+        ({(\n-1)*0.80cm},0) circle (0.26cm);
+      \node[text=white,font=\tiny\bfseries] at ({(\n-1)*0.80cm},0) {\n};
+    }
+    \node[font=\small] at ({8*0.80cm},0) {$\cdots$};
+  \end{tikzpicture}
+  \end{center}
+  {\scriptsize\textbf{Pregunta central:} ?`Toda $r$-coloraci\'on de $\mathbb{N}$
+  contiene siempre estructuras aritm\'eticas monocrom\'aticas?}
+
+  \phdr{Navy}{4 · Teorema de Schur (1916)}
+  \begin{tcolorbox}[thm,title={Teorema}]
+    {\scriptsize Para todo $r\geq 1$ existe $S(r)$ tal que toda
+    $r$-coloraci\'on de $\{1,\ldots,n\}$ con $n\geq S(r)$ contiene
+    $x,y,z$ monocrom\'aticos con $x+y=z$.}
+  \end{tcolorbox}
+
+  \begin{center}
+  {\scriptsize\begin{tabular}{lccccc}
+  \toprule $r$ & 1 & 2 & 3 & 4 & 5 \\
+  \midrule $S(r)$ & 2 & 5 & 14 & 45 & 161 \\
+  \bottomrule
+  \end{tabular}}
+  \end{center}
+
+  \begin{tcolorbox}[ex,title={Consecuencia (Schur)}]
+    {\scriptsize Para todo $k$ $\exists\,n$ tal que $\forall$ primo $p>n$,
+    $x^k+y^k\equiv z^k\pmod{p}$ tiene soluci\'on no trivial.}
+  \end{tcolorbox}
+
+  \phdr{Navy}{5 · Teorema de Van der Waerden (1927)}
+  \begin{tcolorbox}[def,title={Progresi\'on aritm\'etica (PA)}]
+    {\scriptsize $\{a,\,a+d,\,\ldots,\,a+(k{-}1)d\}$ — tama\~no $k$, raz\'on $d$.}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[thm,title={Teorema}]
+    {\scriptsize $\forall\,r,k$ existe $W(r,k)$ tal que toda $r$-coloraci\'on
+    de $\{1,\ldots,n\}$ con $n\geq W(r,k)$ contiene una PA monocrom\'atica
+    de tama\~no $k$.\\[1pt]
+    \textbf{Versi\'on $\infty$:} toda coloraci\'on finita de $\mathbb{Z}^+$
+    contiene PA monocrom\'aticas arbitrariamente largas.}
+  \end{tcolorbox}
+
+  \begin{center}
+  \begin{tikzpicture}[scale=0.68]
+    \foreach \n/\c in {1/red,2/blue,3/blue,4/red,5/red,6/blue,7/blue,8/red,9/blue}{
+      \filldraw[\c!60,draw=\c!80!black]
+        ({(\n-1)*0.78cm},0) circle (0.26cm);
+      \node[text=white,font=\tiny\bfseries] at ({(\n-1)*0.78cm},0) {\n};
+    }
+    \draw[blue!80!black,thick,rounded corners=2pt]
+      ({2*0.78-0.30},-0.30) rectangle ({8*0.78+0.30},0.30);
+    \node[font=\tiny,blue!80!black] at ({4.5*0.78},-0.52)
+      {$\{3,6,9\}$ PA azul, $d=3$};
+  \end{tikzpicture}
+  \end{center}
+
+  \begin{tcolorbox}[key]
+    {\scriptsize\textbf{Cota (Gowers):}
+    $W(r,k)\leq 2^{2^{r^{2^{2^{k+9}}}}}$\hfill$W(2,3)=9$\hspace{4pt}$W(2,4)=35$}
+  \end{tcolorbox}
+}%
+%%── PANEL 6: Temas 6, 7, 8 y 9 ──────────────────────────────────────────────
+\panel{LightBg}{%
+  \phdr{Emerald}{6 · Densidad natural}
+  \begin{tcolorbox}[def,title={Definici\'on}]
+    {\scriptsize $d(A)=\limsup_{n\to\infty}\dfrac{|A\cap\{1,\ldots,n\}|}{n}$}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[key]
+    {\scriptsize
+    $d(n\mathbb{N})=\tfrac{1}{n}$ \quad
+    $d\!\left(\{n^2\}\right)=0$ \quad
+    $d(\text{primos})=0$}
+  \end{tcolorbox}
+
+  \phdr{Amethyst}{7 · Teorema de Szemer\'edi (1975)}
+  \begin{tcolorbox}[pthm,title={Teorema}]
+    {\scriptsize Todo $A\subseteq\mathbb{N}$ con $d(A)>0$ contiene PA de
+    \textbf{cualquier} longitud finita.}
+  \end{tcolorbox}
+  {\scriptsize Implica VdW: en una $r$-coloraci\'on alguna clase de color
+  tiene $d\geq 1/r>0$, luego contiene PA de cualquier longitud.}
+
+  \phdr{Teal}{8 · Teorema de Green-Tao (2004)}
+  \begin{tcolorbox}[ex,title={El problema}]
+    {\scriptsize $d(\text{primos})=0$ $\Rightarrow$ Szemer\'edi \textbf{no
+    aplica}. ?`Contienen los primos PA arbitrariamente largas?}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[tthm,title={Teorema (Green y Tao, 2004)}]
+    {\scriptsize Los n\'umeros primos contienen progresiones aritm\'eticas
+    de \textbf{cualquier} longitud finita $k$.}
+  \end{tcolorbox}
+
+  \begin{center}
+  \begin{tikzpicture}[scale=0.56]
+    \foreach \nnum/\px/\py in {
+        1/0/0,4/3/0,6/5/0,
+        8/1/1,9/2/1,10/3/1,12/5/1,
+        14/1/2,15/2/2,16/3/2,18/5/2,
+        20/1/3,21/2/3,22/3/3,24/5/3,
+        25/0/4,26/1/4,27/2/4,28/3/4,30/5/4}{
+      \filldraw[gray!25,draw=gray!40]
+        ({0.62*\px},{-0.62*\py}) circle (0.22cm);
+      \node[text=gray!55,font=\tiny] at ({0.62*\px},{-0.62*\py}) {\nnum};
+    }
+    \foreach \nnum/\px/\py in {2/1/0,3/2/0,7/0/1,13/0/2,19/0/3}{
+      \filldraw[orange!60,draw=orange!75!black]
+        ({0.62*\px},{-0.62*\py}) circle (0.22cm);
+      \node[text=black,font=\tiny\bfseries] at ({0.62*\px},{-0.62*\py}) {\nnum};
+    }
+    \foreach \nnum/\px/\py in {5/4/0,11/4/1,17/4/2,23/4/3,29/4/4}{
+      \filldraw[red!65,draw=red!80!black]
+        ({0.62*\px},{-0.62*\py}) circle (0.22cm);
+      \node[text=white,font=\tiny\bfseries] at ({0.62*\px},{-0.62*\py}) {\nnum};
+    }
+    \draw[red!75,thick,rounded corners=2pt]
+      ({0.62*4-0.27},0.27) rectangle ({0.62*4+0.27},{-0.62*4-0.27});
+    \node[red!80,font=\tiny\bfseries] at ({0.62*4},{-0.62*4-0.45}) {$d=6$};
+    \filldraw[gray!25,draw=gray!40]    (4.1,-0.10) circle (0.10cm);
+    \node[font=\tiny,right=1pt] at (4.22,-0.10) {Comp.};
+    \filldraw[orange!60,draw=orange!75!black] (4.1,-0.40) circle (0.10cm);
+    \node[font=\tiny,right=1pt] at (4.22,-0.40) {Primo};
+    \filldraw[red!65,draw=red!80!black](4.1,-0.70) circle (0.10cm);
+    \node[red!75,font=\tiny,right=1pt] at (4.22,-0.70) {PA};
+  \end{tikzpicture}
+  \end{center}
+  {\scriptsize\textbf{Ej.:} $k=5$: $5,11,17,23,29$ \quad $k=6$: $7,157,\ldots,757$}
+
+  \phdr{Navy}{9 · Conclusiones}
+  {\scriptsize El hilo conductor: el orden aritm\'etico es inevitable
+  incluso cuando la densidad colapsa a cero.}
+
+  \begin{tcolorbox}[key]
+    {\scriptsize\centering\bfseries
+    Incluso los primos\,---\,densidad cero\,---
+    no escapan al orden aritm\'etico.}
+  \end{tcolorbox}
+}%
+
+\end{document}

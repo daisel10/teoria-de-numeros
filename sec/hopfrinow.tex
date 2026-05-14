@@ -1,0 +1,95 @@
+% Frames de geometría Riemanniana (Hopf-Rinow) que estaban en main.tex
+
+\begin{frame}{Teorema}
+    \begin{block}{Teorema}
+        Sea $(M,g)$ una variedad de Riemann. Sea $p$ $\in$ $M$. Las siguientes afirmaciones son equivalentes:
+        \begin{itemize}
+            \item[(I)] $(M, g)$ es geodésicamente completo.
+            \item[(II)] $(M, d_g)$ es un espacio métricamente completo.
+            \item[(III)] $\exp_p$ está definida en todo $T_p(M)$.
+            \item[(IV)] Los subconjuntos cerrados y acotados de $M$ son compactos.
+            \item[(V)] Suponga que $(M, d_g)$ no es compacto. Existe una sucesión de subconjuntos compactos $K_n \subset M$, con $K_n \subset int(K_{n+1})$ y $\bigcup_n K_n = M$, tal que si $q_n \notin K_n$ entonces $d(p, q_n) \to \infty$ cuando $n \to \infty$.
+        \end{itemize}
+
+        \noindent
+        Además, cualquiera de las afirmaciones anteriores implica que
+        \begin{itemize}
+            \item[(VI)] Para cualquier $q \in M$ existe una geodésica $\gamma$ que une $p$ con $q$ tal que $\ell(\gamma) = d(p, q)$.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{III. $\exp_{p}$ está definida en todo $T_{p}M$}
+Algunas propiedades del mapa exponencial son:
+\begin{itemize}
+    \item $\exp_{p}(0)=p$
+    \item Es una aplicación diferenciable.
+    \item $d_{g}\left(p,\exp_{p}(v)\right)=\|v\|$
+    \item Existe un abierto en $M$ tal que $\exp_{p}$ es difeomorfismo. Esto ayuda a definir un \textbf{sistema de coordenadas normales}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\linewidth]{exp_esfera.png}
+        \caption{Mapa exponencial.}
+        \label{fig:enter-label}
+    \end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{III. $\exp_{p}$ está definida en todo $T_{p}M$}
+\textbf{Ejemplos:}
+\begin{itemize}
+    \item En $\mathbb{R}^n$, el mapa exponencial se puede describir de esta forma: $\exp_{p}(v)=p+v$.
+    \item En la esfera $\mathbb{S}^2$, la aplicación exponencial suponiendo que vive en $\mathbb{R}^3$:
+    $$\exp_{p}(v)=\cos{\left(\|v\|\right)}p+\sin{\left(\|v\|\right)}\frac{v}{\|v\|}$$
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\linewidth]{exp_2.png}
+        \caption{Sistema coordenado en la esfera.}
+        \label{fig:enter-label}
+    \end{figure}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{III. $\exp_{p}$ está definida en todo $T_{p}M$}
+    El teorema de Hopf Rinow propone que la equivalencia se da cuando el mapa exponencial esta definido para todos los elementos de $T_{p}M$. Es decir, siempre existe $\exp_{p}(v)$ sin importar $v$. Esto es equivalente a decir que el \textbf{radio de inyectividad} $\varepsilon$ es infinito.
+    \begin{figure}[H]
+        \centering
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{superficie_exp_no.png}
+        \end{minipage}
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{superficie_exp_no_1.png}
+            
+        \end{minipage}
+        \caption{superficie con exponencial de radio}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{III. $\exp_{p}$ está definida en todo $T_{p}M$}
+
+\begin{center}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{superficie_exp_si.png}
+        \caption{superficie con exponencial de radio infinito.}
+        \label{fig:enter-label}
+    \end{figure}
+\end{center}
+\end{frame}
+
+\begin{frame}{VI. $\ell(\gamma) = d(p, q)$}
+    \textbf{Ejemplos:}
+    \begin{itemize}     
+        \item $\mathbb{R} -\{(0,0)\}$ no se geodésicamente completo (no se cumple la igualdad).
+        \item El semiplano superior de $\mathbb{R}$   no es geodésicamente completo con la  métrica euclidiana, pero si lo es con la métrica hiperbólica.
+        \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\linewidth]{hiperbolico.png}
+        \caption{Plano hiperbólico.}
+        \label{fig:enter-label}
+    \end{figure}
+    \end{itemize}
+\end{frame}

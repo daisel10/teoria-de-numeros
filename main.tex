@@ -1,0 +1,119 @@
+\documentclass[11pt]{beamer}
+\usetheme{Madrid}
+\usefonttheme{serif}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multicol,pst-plot}
+\usepackage{graphicx}
+\graphicspath{{img/}}
+\usepackage{capt-of}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\newcolumntype{Z}{>{\Centering}X}
+\newcommand{\Centering}{\centering\arraybackslash}
+
+
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\tg}{tg}
+
+\setbeamertemplate{caption}[numbered]
+
+\author[De Dios, Orjuela  \& Sanchez ]{Samuel De Dios, Juan Daniel Orjuela  ,David Sanchez.}
+\title{Teoría de Ramsey}
+% Informe o seu email de contato no comando a seguir
+% Por exemplo, alcebiades.col@ufes.br
+\newcommand{\email}{email}
+%\setbeamercovered{transparent} 
+\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+\institute[]{Universidad del Rosario \par Escuela de ciencias e ingeniería \par Proyecto final de Teoría de números \\\\\\Docente: Juan Camilo Arias} 
+\date{\today} 
+%\subject{}
+
+% ---------------------------------------------------------
+% Selecione um estilo de referência
+\bibliographystyle{apalike}
+
+%\bibliographystyle{abbrv}
+%\setbeamertemplate{bibliography item}{\insertbiblabel}
+% ---------------------------------------------------------
+
+% ---------------------------------------------------------
+% Incluir os slides nos quais as referências foram citadas
+%\usepackage[brazilian,hyperpageref]{backref}
+
+%\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+%\renewcommand{\backref}{}
+%\renewcommand*{\backrefalt}[4]{
+%	\ifcase #1 %
+%		Nenhuma citação no texto.%
+%	\or
+%		Citado na página #2.%
+%	\else
+%		Citado #1 vezes nas páginas #2.%
+%	\fi}%
+% ---------------------------------------------------------
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Contenido}
+\tableofcontents 
+\end{frame}
+
+\section{Introducción}
+\input{sec/introduccicon}
+
+
+
+\section{Introducción a teoría de Ramsey}
+\input{sec/hopfrinow}
+
+\input{sec/amistad}
+\input{sec/coloracion}
+
+\section{Teorema de Schur}
+\input{sec/schur}
+
+
+
+\section{Teorema de Van der Waerden}
+\input{sec/vanderwaerden}
+
+\section{Teorema de Szemerédi}
+\input{sec/szmeredi_densidad}
+
+
+\section{Teorema de Szmeredi}
+\input{sec/Szmeredi.tex}
+ 
+
+\section{Teorema de Green-Tao}
+\input{sec/greentao}
+ 
+
+
+
+\begin{frame}
+\begin{center}
+    Gracias.
+\end{center}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{logomarca_UFES}
+\end{figure}
+
+\end{frame}
+
+\end{document}

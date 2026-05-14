@@ -1,0 +1,52 @@
+%%── PANEL 2: PORTADA ────────────────────────────────────────────────────────
+\panel{Navy}{%
+  \begin{center}
+    \vspace{5mm}
+    % K6 decorativo
+    \begin{tikzpicture}[scale=1.3]
+      \foreach \i/\ang in {0/90,1/30,2/-30,3/-90,4/-150,5/150}
+        \coordinate (v\i) at (\ang:1.55cm);
+      \filldraw[white,opacity=0.06] (0,0) circle (1.85cm);
+      \draw[red!55,line width=1.6pt]
+        (v0)--(v1)--(v2)--(v3)--(v4)--(v5)--cycle;
+      \foreach \i/\j in {0/2,0/3,0/4,1/3,1/4,1/5,2/4,2/5,3/5}
+        \draw[white!35,line width=0.7pt] (v\i)--(v\j);
+      \fill[blue!35,opacity=0.3] (v0)--(v2)--(v4)--cycle;
+      \draw[white,line width=1.8pt] (v0)--(v2)--(v4)--cycle;
+      \foreach \i in {0,...,5}
+        \filldraw[white] (v\i) circle (3pt);
+      \node[white!70,font=\scriptsize] at (0,-2.15cm) {$R(3,3)=6$};
+    \end{tikzpicture}
+
+    \vspace{5pt}
+    {\color{white}\LARGE\bfseries Teor\'ia de Ramsey}\\[3pt]
+    {\color{white!70}\normalsize\itshape El orden en el caos}
+
+    \vspace{8pt}
+    {\color{white!30}\rule{5cm}{0.3pt}}
+    \vspace{6pt}
+
+    {\color{white!80}\small Samuel De Dios}\\[1pt]
+    {\color{white!80}\small David S\'anchez}
+
+    \vspace{6pt}
+    {\color{white!30}\rule{5cm}{0.3pt}}
+    \vspace{5pt}
+
+    {\color{white!55}\scriptsize Universidad del Rosario}\\
+    {\color{white!55}\scriptsize Teor\'ia de N\'umeros · 2026}
+
+    \vfill
+
+    {\color{Gold!75}\footnotesize $W(r,k)\leq 2^{2^{r^{2^{2^{k+9}}}}}$}\\[3pt]
+    {\color{white!40}\scriptsize Cota de Gowers (2001)}
+
+    \vspace{8pt}
+    % Barra multicolor inferior
+    \begin{tikzpicture}
+      \foreach \x/\c in {0/red!55,0.65/Gold!75,1.3/Emerald!55,
+                         1.95/Amethyst!55,2.6/Teal!55,3.25/white!40}
+        \fill[\c] (\x cm,0) rectangle (\x cm+0.5cm,0.12cm);
+    \end{tikzpicture}
+  \end{center}
+}%

@@ -1,0 +1,86 @@
+\begin{frame}{Coloraciones y progresiones}
+    \begin{block}{Definición $k$-coloración}
+        Dado un conjunto $X$ una \textit{$r$-coloración} es:
+        \begin{itemize}
+            \item [(I)] Una función $f:X\to \{1,2,\dots,k\}$
+            \item[(II)] Una partición $X=X_{1}\cup X_{2}\cup\dots\cup X_{k}$, donde $X_{i}:=f^{-1}(i)$
+        \end{itemize}
+        Se dice que $A$ es \textbf{monocromático} si $A\subseteq f^{-1}(i)$ para algún $i$.
+    \end{block}
+
+    \begin{block}{Definición progresión aritmética}
+        Una \textit{progresión aritmética} es un conjunto de enteros tal que la diferencia de números sucesivos es constante. Es decir, es de la forma
+        $$\{a, a+d,a+2d,\dots,a+(k-1)d\}=\{a+id:i=0,1,\dots,k-1\}$$
+        Donde $a$ es el inicio, $d$ el paso o distancia y $k$ el tamaño de la progresión.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Ejemplo de motivación}
+    \begin{center}
+        ¿Se puede solucionar $x+y=z$ en $\{1,2,3,4,5\}$?
+        \pause\\\
+
+        Si, algunas soluciones son:
+        \begin{align*}
+        1+1 = 2 \qquad
+        2+3 = 5 \qquad
+        3+1 = 4
+        \end{align*}
+
+        \pause\\\
+
+        ¿Se preserva esta propiedad en una 2-coloración de $\{1,2,3,4,5\}$?
+
+        \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+        $\{\}\mid\{1,2,3,4,5\}$ &
+        $\{1\}\mid\{2,3,4,5\}$ &
+        $\{2\}\mid\{1,3,4,5\}$ &
+        $\{3\}\mid\{1,2,4,5\}$ \\
+
+        $\{4\}\mid\{1,2,3,5\}$ &
+        $\{5\}\mid\{1,2,3,4\}$ &
+        $\{1,2\}\mid\{3,4,5\}$ &
+        $\{1,3\}\mid\{2,4,5\}$ \\
+
+        $\{1,4\}\mid\{2,3,5\}$ &
+        $\{1,5\}\mid\{2,3,4\}$ &
+        $\{2,3\}\mid\{1,4,5\}$ &
+        $\{2,4\}\mid\{1,3,5\}$ \\
+
+        $\{2,5\}\mid\{1,3,4\}$ &
+        $\{3,4\}\mid\{1,2,5\}$ &
+        $\{3,5\}\mid\{1,2,4\}$ &
+        $\{4,5\}\mid\{1,2,3\}$ \\
+        \end{tabular}
+        \end{table}
+
+        \pause
+
+        \textbf{Si se cumple bajo 2-coloración.}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Teorema de Schur}
+    \begin{block}{Teorema/Lema (Schur, 1916)}
+        Para todo entero positivo $r$ existe un mínimo entero positivo $S(r)$ tal que toda $r$-coloración de $[n]=\{1,2,\dots,n\}$, con $n\geq S(r)$, contiene una solución monocromática de $x+y=z$.
+    \end{block}\pause
+    \begin{center}
+        \begin{align*}
+        S(1)=2 \qquad
+        S(2)=5 \qquad
+        S(3) = 14 \qquad
+        S(4) = 45 \qquad
+        S(5) = 161
+        \end{align*}    
+        \caption{A030126 en OEIS}
+    \end{center}
+
+    
+    \pause
+
+    \begin{block}{Teorema (Schur, 1916)}
+        Para todo natural $k$ existe un entero $n$ tal que para todo primo $p>n$, la ecuación $x^{k}+y^{k}\equiv z^{k}\text{ mod }p$ tiene solución no trivial.
+    \end{block}
+\end{frame}
