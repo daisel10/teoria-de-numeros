@@ -1,0 +1,103 @@
+% ============================================================
+% SECCIÓN 9 — Conclusiones
+% ============================================================
+
+\section{Conclusiones}
+
+% --- Diapositiva 1: La cadena de resultados ---
+\begin{frame}{El Arco de la Teoría de Ramsey}
+
+    \begin{center}
+    \begin{tikzpicture}[
+        node distance=0.6cm and 0.4cm,
+        boxa/.style={draw, rounded corners=4pt, fill=blue!60,   text=white,
+                     font=\small\bfseries, minimum width=2.4cm,
+                     minimum height=0.7cm, align=center},
+        boxb/.style={draw, rounded corners=4pt, fill=teal!65,   text=white,
+                     font=\small\bfseries, minimum width=2.4cm,
+                     minimum height=0.7cm, align=center},
+        boxc/.style={draw, rounded corners=4pt, fill=violet!65, text=white,
+                     font=\small\bfseries, minimum width=2.4cm,
+                     minimum height=0.7cm, align=center},
+        boxd/.style={draw, rounded corners=4pt, fill=orange!70, text=white,
+                     font=\small\bfseries, minimum width=2.4cm,
+                     minimum height=0.7cm, align=center},
+        boxe/.style={draw, rounded corners=4pt, fill=red!65,    text=white,
+                     font=\small\bfseries, minimum width=2.4cm,
+                     minimum height=0.7cm, align=center},
+        arr/.style={->, thick, gray!70}
+    ]
+        \node[boxa] (ramsey) {Teoría de\\Ramsey};
+        \node[boxb, right=0.5cm of ramsey] (schur)  {Schur\\(1916)};
+        \node[boxc, right=0.5cm of schur]  (vdw)    {Van der\\Waerden (1927)};
+        \node[boxd, below=0.8cm of schur]  (szem)   {Szemerédi\\(1975)};
+        \node[boxe, right=0.5cm of szem]   (gt)     {Green-Tao\\(2004)};
+
+        \draw[arr] (ramsey) -- (schur);
+        \draw[arr] (schur)  -- (vdw);
+        \draw[arr] (vdw)    -- (szem);
+        \draw[arr] (szem)   -- (gt);
+
+        \node[font=\tiny, gray, below=0.15cm of ramsey] {patrones inevitables};
+        \node[font=\tiny, gray, below=0.15cm of schur]  {$x{+}y{=}z$ mono.};
+        \node[font=\tiny, gray, below=0.15cm of vdw]    {PA mono.};
+        \node[font=\tiny, gray, below=0.15cm of szem]   {$d{>}0 \to$ PA};
+        \node[font=\tiny, gray, below=0.15cm of gt]     {primos $\to$ PA};
+    \end{tikzpicture}
+    \end{center}
+
+    \vspace{0.2cm}
+
+    \begin{block}{El mensaje central}
+        Cada resultado extiende el anterior, forzando más orden
+        en contextos donde parecía no haberlo.
+        \textbf{La estructura aritmética es inevitable.}
+    \end{block}
+
+\end{frame}
+
+
+% --- Diapositiva 2: Reflexión final ---
+\begin{frame}{Conclusiones}
+
+    \begin{exampleblock}{\centering Principio de Motzkin — revisitado}
+        \centering
+        \Large\textit{``El desorden completo es imposible.''}
+    \end{exampleblock}
+
+    \vspace{0.35cm}
+
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Lo que aprendimos:}
+            \begin{itemize}
+                \item El \textbf{Palomar} es el germen de todo.
+                \item \textbf{Schur} y \textbf{VdW} garantizan
+                      estructuras en coloraciones.
+                \item \textbf{Szemerédi} solo necesita densidad positiva.
+                \item \textbf{Green-Tao} vence incluso a la
+                      densidad nula de los primos.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Preguntas abiertas:}
+            \begin{itemize}
+                \item ¿Cuánto vale $R(5,5)$?
+                \item Cotas exactas de $W(r,k)$.
+                \item ¿PA en los primos gemelos?
+                \item Conjetura de Erdős sobre PA en
+                      conjuntos de series divergentes.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \pause
+    \vspace{0.35cm}
+
+    \begin{alertblock}{\centering Mensaje final}
+        \centering
+        En matemáticas, los \textbf{patrones no son casualidad}:
+        son una consecuencia \textbf{inevitable} del tamaño.
+    \end{alertblock}
+
+\end{frame}

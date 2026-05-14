@@ -1,34 +1,43 @@
-% DIAPOSITIVA 1: Contexto Histórico y Filosofía
-\begin{frame}{Contexto Histórico y Filosofía}
+% ============================================================
+% SECCIÓN 1 — Introducción a la Teoría de Ramsey (5 min)
+% ============================================================
 
-    \begin{columns}
+% --- Diapositiva 1: Pregunta motivadora ---
+\begin{frame}{¿Existe el caos absoluto?}
 
-        \begin{column}{0.65\textwidth}
+    \begin{columns}[T]
 
-            \textbf{Frank Plumpton Ramsey (1903--1930)} fue un genio
-            británico cuyas ideas sentaron las bases de esta rama de
-            la matemática.
+        \begin{column}{0.60\textwidth}
+            \vspace{0.2cm}
+            \begin{exampleblock}{\centering Pregunta central}
+                \centering
+                \textit{``¿Puede un sistema ser tan caótico que no tenga ningún patrón?''}
+            \end{exampleblock}
 
             \vspace{0.4cm}
 
-            \begin{exampleblock}{Principio de Motzkin}
+            \textbf{La Teoría de Ramsey} responde de manera sorprendente:
+
+            \vspace{0.2cm}
+
+            \begin{alertblock}{\centering Principio de Motzkin}
                 \centering
-                \textit{``El desorden completo es imposible''.}
-            \end{exampleblock}
+                \Large\textit{``El desorden completo es imposible.''}
+            \end{alertblock}
 
             \vspace{0.3cm}
 
-            \begin{block}{Concepto Clave}
-                Si un sistema es lo suficientemente grande, por más
-                caótico que parezca, \textbf{siempre aparecerán
-                patrones} o subconjuntos con propiedades específicas.
-            \end{block}
-
+            En sistemas suficientemente grandes, los \textbf{patrones
+            son inevitables}, sin importar cuánto intentemos evitarlos.
         \end{column}
 
-        \begin{column}{0.35\textwidth}
-            % Puedes insertar aquí una imagen de Ramsey, p.ej.:
-            % \includegraphics[width=\linewidth]{ramsey.jpg}
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Frank P. Ramsey}
+                \centering
+                (1903 -- 1930)\\[4pt]
+                Matemático, filósofo y\\ economista británico.\\[6pt]
+                Sus ideas fundaron una\\ rama entera de la\\ combinatoria moderna.
+            \end{block}
         \end{column}
 
     \end{columns}
@@ -36,60 +45,96 @@
 \end{frame}
 
 
-% DIAPOSITIVA 2: Definición Formal en Teoría de Grafos
-\begin{frame}{Definición Formal}
+% --- Diapositiva 2: El Principio del Palomar ---
+\begin{frame}{El Principio del Palomar}
 
-    \begin{alertblock}{Número de Ramsey $R(r,s)$}
-        Para cualquier par de enteros positivos $(r,s)$, existe un
-        número mínimo $R(r,s)$ tal que, si $n \geq R(r,s)$ y se
-        colorean las aristas de un grafo completo $K_n$ con
-        \textbf{dos colores}, entonces necesariamente aparece:
-        \begin{itemize}
-            \item un subgrafo $K_r$ con todas las aristas del
-                  \textbf{primer color}, o
-            \item un subgrafo $K_s$ con todas las aristas del
-                  \textbf{segundo color}.
-        \end{itemize}
-    \end{alertblock}
+    \begin{block}{Principio del Palomar (Dirichlet)}
+        Si se distribuyen $n+1$ objetos en $n$ cajones, al menos
+        un cajón contiene \textbf{2 o más objetos}.
+    \end{block}
 
     \pause
+    \vspace{0.3cm}
+
+    \textbf{Ejemplo clásico:} En un grupo de \textbf{13 personas},
+    al menos dos nacieron en el mismo mes.
+
+    \vspace{0.3cm}
 
     \begin{center}
-        \textbf{Valores conocidos:} \quad
-        $R(3,3)=6$ \quad $R(3,4)=9$ \quad $R(3,5)=14$ \quad
-        $R(4,4)=18$
+    \begin{tikzpicture}[scale=0.78]
+        % Cajones (meses)
+        \foreach \i in {0,1,2,3,4,5,6,7,8,9,10,11}{
+            \draw[thick, blue!50!black, fill=blue!8]
+                ({1.05*\i - 0.45}, 0) rectangle ({1.05*\i + 0.45}, 0.85);
+        }
+        % Personas (palomas) — 13 en total
+        \foreach \i/\col in {0/red,1/red,2/orange,3/orange,4/green!60!black,
+                              5/green!60!black,6/violet,7/violet,8/teal,
+                              9/teal,10/brown,11/brown,11/magenta}{
+            \filldraw[\col!80, draw=\col!90!black]
+                ({1.05*\i}, 1.3) circle (0.22cm);
+        }
+        % Etiqueta de flecha doble en el cajón repetido
+        \draw[->, thick, red] (11*1.05, 1.62) -- (11*1.05, 0.9)
+            node[midway, right=3pt, font=\tiny\bfseries, red] {¡2 aquí!};
+        % Meses
+        \node[font=\tiny, gray] at (5.25*1.05, -0.25) {12 meses — 13 personas};
+    \end{tikzpicture}
+    \end{center}
+
+    \pause
+    \vspace{0.2cm}
+    \begin{center}
+        \textbf{Moraleja:} la densidad fuerza la coincidencia. \\
+        Ramsey generaliza esta idea a estructuras mucho más ricas.
     \end{center}
 
 \end{frame}
 
 
-% DIAPOSITIVA 3: Los Tres Pilares y Conclusión
-\begin{frame}{Método de Deducción: Los Tres Pilares}
+% --- Diapositiva 3: Definición formal del número de Ramsey ---
+\begin{frame}{El Número de Ramsey $R(r,s)$}
 
-    Para demostrar o entender un problema de Ramsey se consideran:
-
-    \begin{enumerate}
-
-        \item \textbf{Estructura:} Se trabaja con un conjunto grande
-              (un ``universo'' de elementos).
-
-        \item \textbf{Partición (Conteo):} Los elementos se dividen
-              en categorías —colores, grupos, clases.
-
-        \item \textbf{Inevitabilidad (Orden):} Al alcanzar un tamaño
-              crítico, la densidad fuerza la aparición de un
-              \textbf{patrón uniforme}.
-
-    \end{enumerate}
+    \begin{alertblock}{Definición}
+        Para enteros positivos $r,s$, el \textbf{número de Ramsey}
+        $R(r,s)$ es el mínimo $n$ tal que toda $2$-coloración de
+        las aristas de $K_n$ contiene:
+        \begin{itemize}
+            \item un $K_r$ \textbf{completamente rojo}, \textbf{o}
+            \item un $K_s$ \textbf{completamente azul}.
+        \end{itemize}
+    \end{alertblock}
 
     \pause
     \vspace{0.3cm}
 
-    \begin{block}{Conclusión}
-        La Teoría de Ramsey muestra que \textbf{el azar tiene
-        límites}. No importa cuánto se mezclen los elementos; si el
-        sistema crece lo suficiente, los patrones aparecen por
-        \textit{pura necesidad matemática}.
-    \end{block}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Valores conocidos}
+                \begin{center}
+                \begin{tabular}{cc}
+                    \hline
+                    Número & Valor \\
+                    \hline
+                    $R(3,3)$ & $6$ \\
+                    $R(3,4)$ & $9$ \\
+                    $R(3,5)$ & $14$ \\
+                    $R(4,4)$ & $18$ \\
+                    \hline
+                \end{tabular}
+                \end{center}
+            \end{block}
+        \end{column}
+        \begin{column}{0.46\textwidth}
+            \begin{exampleblock}{Los tres pilares}
+                \begin{enumerate}
+                    \item \textbf{Estructura}: un universo grande.
+                    \item \textbf{Partición}: se divide en colores.
+                    \item \textbf{Inevitabilidad}: el tamaño fuerza el patrón.
+                \end{enumerate}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
 
 \end{frame}

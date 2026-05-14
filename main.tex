@@ -7,6 +7,7 @@
 \usepackage[T1]{fontenc}
 
 \usepackage{tikz}
+\usetikzlibrary{positioning}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -16,49 +17,29 @@
 \usepackage{capt-of}
 \usepackage{tabularx}
 \usepackage{xcolor}
+\usepackage{float}
 \newcolumntype{Z}{>{\Centering}X}
 \newcommand{\Centering}{\centering\arraybackslash}
-
 
 \DeclareMathOperator{\sen}{sen}
 \DeclareMathOperator{\tg}{tg}
 
 \setbeamertemplate{caption}[numbered]
 
-\author[De Dios, Orjuela  \& Sanchez ]{Samuel De Dios, Juan Daniel Orjuela  ,David Sanchez.}
+\author[De Dios, Orjuela \& Sanchez]{Samuel De Dios \and Juan Daniel Orjuela \and David Sanchez}
 \title{Teoría de Ramsey}
-% Informe o seu email de contato no comando a seguir
-% Por exemplo, alcebiades.col@ufes.br
 \newcommand{\email}{email}
-%\setbeamercovered{transparent} 
-\setbeamertemplate{navigation symbols}{} 
-%\logo{} 
-\institute[]{Universidad del Rosario \par Escuela de ciencias e ingeniería \par Proyecto final de Teoría de números \\\\\\Docente: Juan Camilo Arias} 
-\date{\today} 
-%\subject{}
+\setbeamertemplate{navigation symbols}{}
+\institute[]{
+    Universidad del Rosario \\
+    Escuela de Ciencias e Ingeniería \\
+    Proyecto final de Teoría de Números \\[4pt]
+    \textit{Docente:} Juan Camilo Arias
+}
+\date{\today}
 
-% ---------------------------------------------------------
-% Selecione um estilo de referência
 \bibliographystyle{apalike}
 
-%\bibliographystyle{abbrv}
-%\setbeamertemplate{bibliography item}{\insertbiblabel}
-% ---------------------------------------------------------
-
-% ---------------------------------------------------------
-% Incluir os slides nos quais as referências foram citadas
-%\usepackage[brazilian,hyperpageref]{backref}
-
-%\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-%\renewcommand{\backref}{}
-%\renewcommand*{\backrefalt}[4]{
-%	\ifcase #1 %
-%		Nenhuma citação no texto.%
-%	\or
-%		Citado na página #2.%
-%	\else
-%		Citado #1 vezes nas páginas #2.%
-%	\fi}%
 % ---------------------------------------------------------
 
 \begin{document}
@@ -68,52 +49,40 @@
 \end{frame}
 
 \begin{frame}{Contenido}
-\tableofcontents 
+    \tableofcontents
 \end{frame}
 
-\section{Introducción}
+% 1. Introducción (5 min)
+\section{Introducción a la Teoría de Ramsey}
 \input{sec/introduccicon}
 
-
-
-\section{Introducción a teoría de Ramsey}
-\input{sec/hopfrinow}
-
+% 2. Problema de la amistad (3 min)
 \input{sec/amistad}
+
+% 3. Coloración de enteros (1 min)
 \input{sec/coloracion}
 
+% 4. Teorema de Schur (4 min)
 \section{Teorema de Schur}
 \input{sec/schur}
 
-
-
+% 5. Teorema de Van der Waerden (4 min)
 \section{Teorema de Van der Waerden}
 \input{sec/vanderwaerden}
 
-\section{Teorema de Szemerédi}
+% 6. Densidad natural (1 min)
+\section{Densidad Natural}
 \input{sec/szmeredi_densidad}
 
+% 7. Teorema de Szemerédi (4 min)
+\section{Teorema de Szemerédi}
+\input{sec/Szmeredi}
 
-\section{Teorema de Szmeredi}
-\input{sec/Szmeredi.tex}
- 
-
+% 8. Teorema de Green-Tao (5 min)
 \section{Teorema de Green-Tao}
 \input{sec/greentao}
- 
 
-
-
-\begin{frame}
-\begin{center}
-    Gracias.
-\end{center}
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.5\textwidth]{logomarca_UFES}
-\end{figure}
-
-\end{frame}
+% 9. Conclusiones
+\input{sec/conclusiones}
 
 \end{document}

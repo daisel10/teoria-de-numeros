@@ -1,32 +1,47 @@
-% DIAPOSITIVA 1: Contexto Histórico y Concepto Clave
-\begin{frame}{Teorema de Szemerédi: Contexto Histórico}
+% ============================================================
+% SECCIÓN 7 — Teorema de Szemerédi (4 min)
+% ============================================================
 
-    \begin{columns}
+% --- Diapositiva 1: Contexto e idea central ---
+\begin{frame}{Teorema de Szemerédi: La Pregunta}
 
-        \begin{column}{0.6\textwidth}
-            Propuesto como conjetura por \textbf{Erdős y Turán} en
-            1936, no fue hasta \textbf{1975} que \textbf{Endre
-            Szemerédi} logró demostrarlo, obteniendo el
-            \textbf{Premio Abel}.
+    \begin{columns}[T]
+
+        \begin{column}{0.58\textwidth}
+            \begin{block}{Conjetura de Erdős y Turán (1936)}
+                Todo subconjunto de los naturales con
+                \textbf{densidad positiva} contiene progresiones
+                aritméticas de cualquier longitud.
+            \end{block}
 
             \vspace{0.4cm}
 
-            \begin{block}{Concepto Clave: Densidad vs.\ Color}
-                Mientras que Ramsey trabaja con \textit{coloraciones},
-                Szemerédi trabaja con \textbf{densidad}: si un
-                subconjunto de enteros es lo suficientemente
-                ``grueso'', debe contener progresiones aritméticas.
-            \end{block}
+            Demostrada por \textbf{Endre Szemerédi} en \textbf{1975},
+            logrando el \textbf{Premio Abel}.
+
+            \vspace{0.4cm}
+
+            \begin{exampleblock}{Cambio de paradigma}
+                \begin{tabular}{ll}
+                    \textbf{Van der Waerden:} & coloración $\to$ PA\\[3pt]
+                    \textbf{Szemerédi:} & densidad $\to$ PA
+                \end{tabular}\\[4pt]
+                Si un conjunto es lo suficientemente \textit{``grueso''},
+                ya contiene progresiones.
+            \end{exampleblock}
         \end{column}
 
-        \begin{column}{0.4\textwidth}
-            \begin{exampleblock}{Conexiones}
+        \begin{column}{0.38\textwidth}
+            \begin{block}{Conexiones}
                 \begin{itemize}
+                    \item Combinatoria
                     \item Teoría de números
-                    \item Teoría ergódica
-                    \item Informática (TCS)
+                    \item Teoría ergódica\\
+                          {\footnotesize (Furstenberg 1977)}
+                    \item Ciencias de la\\
+                          computación (TCS)
                 \end{itemize}
-            \end{exampleblock}
+            \end{block}
         \end{column}
 
     \end{columns}
@@ -34,60 +49,64 @@
 \end{frame}
 
 
-% DIAPOSITIVA 2: Definición Formal
+% --- Diapositiva 2: Enunciado formal ---
 \begin{frame}{Teorema de Szemerédi: Enunciado Formal}
 
     \begin{alertblock}{Teorema (Szemerédi, 1975)}
-        Sea $A \subseteq \{1, 2, \dots, N\}$. Para todo entero
-        $k \geq 3$ y todo $\delta > 0$, existe $N(\delta, k)$ tal
-        que si
-        $$|A| \geq \delta N$$
-        entonces $A$ contiene una \textbf{progresión aritmética de
-        longitud $k$}.
+        Sea $A \subseteq \mathbb{N}$ con densidad natural positiva:
+        \[
+            d(A) = \limsup_{N\to\infty} \frac{|A\cap\{1,\ldots,N\}|}{N} > 0.
+        \]
+        Entonces $A$ contiene progresiones aritméticas de
+        \textbf{cualquier longitud finita} $k \geq 1$.
     \end{alertblock}
 
     \pause
     \vspace{0.3cm}
 
-    \begin{block}{Diferencia con Ramsey Tradicional}
+    \begin{block}{¿Por qué es más fuerte que Van der Waerden?}
         \begin{itemize}
-            \item \textbf{Ramsey:} al dividir en $r$ colores, algún
-                  color contendrá el patrón.
-            \item \textbf{Szemerédi:} \textit{cualquier} conjunto con
-                  densidad positiva contiene el patrón, sin necesidad
-                  de considerar todas las clases.
+            \item \textbf{VdW} garantiza PA en \textit{algún} color
+                  de una $r$-coloración completa.
+            \item \textbf{Szemerédi} habla de \textit{cualquier}
+                  subconjunto con densidad positiva, sin requerir
+                  una partición de todos los enteros.
         \end{itemize}
     \end{block}
+
+    \pause
+    \vspace{0.15cm}
+    \begin{center}
+        \textit{Szemerédi implica VdW: al colorear con $r$ colores,\\
+        algún color tiene densidad $\geq 1/r > 0$.}
+    \end{center}
 
 \end{frame}
 
 
-% DIAPOSITIVA 3: El Lema de Regularidad y Conclusión
+% --- Diapositiva 3: Lema de regularidad y conclusión ---
 \begin{frame}{El Lema de Regularidad de Szemerédi}
 
-    Para demostrar el teorema, Szemerédi introdujo el
-    \textbf{Lema de Regularidad}, hoy una herramienta fundamental
-    en combinatoria:
+    Herramienta central de la demostración, hoy fundamental en
+    combinatoria:
 
     \begin{enumerate}
-        \item \textbf{Partición en bloques:} Cualquier grafo grande
-              puede dividirse en bloques más pequeños.
-        \item \textbf{Comportamiento pseudo-aleatorio:} La mayoría de
-              los bloques se comportan de manera casi aleatoria
-              (``regular'').
+        \item \textbf{Partición en bloques uniformes:} Cualquier
+              grafo grande puede dividirse en bloques de tamaño similar.
+        \item \textbf{Comportamiento cuasi-aleatorio:} La mayoría
+              de los pares de bloques son \textit{regulares}.
         \item \textbf{Estructura forzada:} La regularidad hace
               inevitable la aparición de progresiones aritméticas.
     \end{enumerate}
 
     \pause
-    \vspace{0.3cm}
+    \vspace{0.35cm}
 
     \begin{block}{Conclusión}
-        El Teorema de Szemerédi refuerza la máxima de Ramsey:
-        \textbf{la estructura es inevitable}. Si seleccionas una
-        fracción constante de los enteros, no importa cuán caótica
-        sea tu elección; terminarás creando una progresión aritmética
-        perfecta, por \textit{pura necesidad matemática}.
+        \textbf{Si eliges una fracción constante de los enteros,
+        sin importar cuán caótica sea tu elección, terminarás
+        creando progresiones aritméticas perfectas.}\\[4pt]
+        \centering\textit{Pura necesidad matemática.}
     \end{block}
 
 \end{frame}
